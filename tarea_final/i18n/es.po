@@ -1,0 +1,44 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * fx_fnz_banco_cfg
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-01 15:00+0000\n"
+"PO-Revision-Date: 2017-02-09 08:00+0000\n"
+"Last-Translator: Boris Luis <cfrias@uci.cu>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/odoo/teams/41243/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: fx_fnz_banco_cfg
+#: model:ir.ui.menu,name:fx_fnz_banco_cfg.menu_fx_fnz_banco_cfg_root
+msgid "Configuracion"
+msgstr "Configuración"
+
+#. module: fx_fnz_banco_cfg
+#: model:ir.ui.view,arch_db:fx_fnz_banco_cfg.banco_config_settings_view
+#: model:ir.actions.act_window,name:fx_fnz_banco_cfg.banco_config_settings_action
+msgid "Banco: Configuracion"
+msgstr "Banco: Configuración"
+
+#. module: fx_fnz_banco_cfg
+#: code:addons/fx_fnz_banco_cfg/modelos/fx_fnz_banco_ctabancaria.py:8
+#, python-format
+msgid "segun"
+msgstr "según"
+
+#. module: fx_fnz_banco_cfg
+#: code:addons/fx_fnz_banco_cfg/modelos/fx_fnz_banco_ctabancaria.py:9
+#, python-format
+msgid "Limite"
+msgstr "Límite"
+
+#. module: fx_fnz_banco_cfg
+#: model:ir.actions.act_window,help:fx_fnz_banco_cfg.fx_fnz_banco_ctabancaria_action
+msgid "Presione aqui para agregar una nueva Cuenta Bancaria."
+msgstr "Presione aquí para agregar una nueva Cuenta Bancaria."

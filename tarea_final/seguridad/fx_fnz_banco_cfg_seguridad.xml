@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <data noupdate="1">
+
+        <!--Grupos-->
+        <record id="fx_fnz_banco_cfg" model="res.groups">
+            <field name="name">Banco - Configurador</field>
+            <field name="category_id" ref="fx_fnz_comun.fx_module_category_fnz_cfg"/>
+            <field name="comment">Rol designado para realizar la configuración del subsistema Banco</field>
+        </record>
+
+        <record id="fx_fnz_banco_docs" model="res.groups">
+            <field name="name">Banco - Documentador</field>
+            <field name="category_id" ref="fx_fnz_comun.fx_module_category_fnz_docs"/>
+            <field name="comment">Rol designado para realizar la Gestión de Documentos del subsistema Banco</field>
+            <field name="implied_ids" eval="[(4, ref('fx_fnz_comun.fx_fnz_comun'))]" />
+        </record>
+
+        <record id="fx_fnz_banco_cierre" model="res.groups">
+            <field name="name">Banco - Cierre</field>
+            <field name="category_id" ref="fx_fnz_comun.fx_module_category_fnz_cierre"/>
+            <field name="comment">Rol designado para realizar el Cierre Contable del subsistema Banco</field>
+        </record>
+
+        <record id="fx_fnz_banco_manager" model="res.groups">
+            <field name="name">Banco - Administrador</field>
+            <field name="category_id" ref="fx_fnz_comun.fx_module_category_fnz"/>
+            <field name="comment">Rol administrador para el subsistema Banco</field>
+            <field name="implied_ids"
+                eval="[
+                    (4, ref('fx_fnz_banco_cfg.fx_fnz_banco_cfg')),
+                    (4, ref('fx_fnz_banco_cfg.fx_fnz_banco_docs')),
+                    (4, ref('fx_fnz_banco_cfg.fx_fnz_banco_cierre'))]" />
+        </record>
+
+        <record id="fx_fnz_comun.fx_fnz_manager" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('fx_fnz_banco_cfg.fx_fnz_banco_manager'))]" />
+        </record>
+
+    </data>
+</odoo>

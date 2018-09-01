@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+        <!-- MODOS DE VISTA -->
+        <!-- Declaracion del formulario -->
+        <record model="ir.ui.view" id="departamento_form">
+            <field name="name">Departamento</field>
+            <field name="model">departamento</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Departamento">
+                    <sheet>
+                        <div class="oe_form_container">
+                            <div class="oe_form_sheet">
+                                <group  >
+                                    <field name="name"/>
+                                    <field name="facultad_id"/>
+                                    <field name="descripcion"/>
+                                </group>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Declaracion de la vista de árbol-->
+        <record model="ir.ui.view" id="departamento_tree">
+            <field name="name">Departamento</field>
+            <field name="model">departamento</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Departamento">
+                    <!--delete="false"-->
+                    <field name="name"/>
+                    <field name="facultad_id"/>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ACCIONES -->
+        <record model="ir.actions.act_window" id="departamento_action">
+            <field name="name">Departamento</field>
+            <field name="res_model">departamento</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+
+    <!--<menuitem id="menu_test" name="Test"/>-->
+    <!--<menuitem id="menu_test_vertical" parent="menu_test" name="Test" />-->
+    <menuitem id="menu_departamento"  parent="menu_test_vertical" name="Departamento"   action="departamento_action"/>
+
+</odoo>

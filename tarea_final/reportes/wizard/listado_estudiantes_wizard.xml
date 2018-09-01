@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="listado_estudiantes_view" model="ir.ui.view">
+            <field name="name">Listado de estudiantes</field>
+            <field name="model">listado.estudiantes</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Separadores">
+                    <group col="6">
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                        <!--<field name="r_moneda" options="{'no_create': True, 'no_open': True}"/>-->
+                        <!--<field name="r_usuario" invisible="True"/>-->
+                    </group>
+                    <footer>
+                        <button name="imprimir_reporte" string="Imprimir" type="object" default_focus="1" class="oe_highlight"/>
+                        o
+                        <button string="Cancelar" class="oe_link" special="cancel" />
+                        <!--name="obtener_reporte"-->
+                    </footer>
+                </form>
+             </field>
+        </record>
+
+        <record id="action_listado_estudiantes_menu" model="ir.actions.act_window">  <!-- rename id -->
+            <field name="name">Listado de estudiantes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">listado.estudiantes</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="listado_estudiantes_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menu general para informes -->
+        <!--<menuitem id="menu_test" name="Tarea final"/>-->
+        <!--<menuitem id="menu_test_vertical" parent="menu_test" name="Univerisidad" />-->
+        <menuitem id="menu_reportes" parent="menu_test" name="Reportes" />
+        <menuitem id="menu_estudiante"  parent="menu_reportes" name="Listado de estudiantes"   action="action_listado_estudiantes_menu"/>
+
+    </data>
+</odoo>

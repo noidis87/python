@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IncapacidadPermanente" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" >
+	<property name="ireport.zoom" value="1.3310000000000193"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="cheques_emitidos" >
+		<parameter name="fecha_inicio" class="java.lang.String"/>
+		<parameter name="fecha_fin" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     profesor."name" AS profesor_name,
+     profesor."apellidos" AS profesor_apellidos,
+     profesor."fecha_egreso" AS profesor_fecha_egreso,
+     facultad."name" AS facultad_name,
+     departamento."name" AS departamento_name
+FROM
+     "public"."facultad" facultad INNER JOIN "public"."profesor" profesor ON facultad."id" = profesor."facultad_id"
+     INNER JOIN "public"."departamento" departamento ON facultad."id" = departamento."facultad_id"
+     AND departamento."id" = profesor."dpto_id"
+WHERE
+     profesor."fecha_egreso" >= to_date($P{fecha_inicio},'YYYY-MM-DD')
+     and profesor."fecha_egreso" <= to_date($P{fecha_fin},'YYYY-MM-DD')]]>
+		</queryString>
+		<field name="profesor_name" class="java.lang.String"/>
+		<field name="profesor_apellidos" class="java.lang.String"/>
+		<field name="profesor_fecha_egreso" class="java.sql.Date"/>
+		<field name="facultad_name" class="java.lang.String"/>
+		<field name="departamento_name" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="fecha_inicio" class="java.lang.String"/>
+	<parameter name="fecha_fin" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     facultad."name" AS facultad_name
+FROM
+     "public"."facultad" facultad INNER JOIN "public"."estudiante" estudiante ON facultad."id" = estudiante."facultad_id"]]>
+	</queryString>
+	<field name="facultad_name" class="java.lang.String"/>
+	<variable name="facultad_name_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{facultad_name}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="607" y="52" width="49" height="20" />
+				<textElement textAlignment="Center">
+					<font fontName="Serif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="655" y="52" width="96" height="19" />
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="11" width="371" height="34" />
+				<textElement textAlignment="Right">
+					<font fontName="Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE PROFESORES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="8" width="240" height="61" />
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38">
+			<staticText>
+				<reportElement x="4" y="9" width="111" height="20" />
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de egreso]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="9" width="74" height="20" />
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[(($P{fecha_inicio} != null && $P{fecha_inicio}.length() == 10) ? $P{fecha_inicio}.substring(8,10)+"-"+$P{fecha_inicio}.substring(5,7)+"-"+$P{fecha_inicio}.substring(0,4) : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="9" width="100" height="20" />
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[(($P{fecha_fin} != null && $P{fecha_fin}.length() == 10) ? $P{fecha_fin}.substring(8,10)+"-"+$P{fecha_fin}.substring(5,7)+"-"+$P{fecha_fin}.substring(0,4) : "")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="179" y="9" width="15" height="20" />
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[al]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="55">
+			<textField evaluationTime="Report">
+				<reportElement x="720" y="32" width="30" height="20" />
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="32" width="80" height="20" />
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="32">
+			<textField>
+				<reportElement x="641" y="9" width="80" height="20" />
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="721" y="9" width="29" height="20" />
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="56">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}.intValue() > 0]]></printWhenExpression>
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="0" y="0" width="752" height="56" />
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="cheques_emitidos" >
+						<datasetParameter name="fecha_inicio">
+							<datasetParameterExpression><![CDATA[$P{fecha_inicio}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fecha_fin">
+							<datasetParameterExpression><![CDATA[$P{fecha_fin}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="150" >
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="30" y="0" width="78" height="30" />
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="150" height="25" />
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{profesor_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="177" >
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="40" y="0" width="90" height="30" />
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Apellidos]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="177" height="25" />
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{profesor_apellidos}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="176" >
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="47" y="0" width="90" height="30" />
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Facultad]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="176" height="25" />
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{facultad_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="113" >
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="12" y="0" width="90" height="30" />
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Departamento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="113" height="25" />
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{departamento_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="135" >
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="15" y="0" width="104" height="30" />
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha de egreso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="135" height="25" />
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{profesor_fecha_egreso})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="307" y="15" width="165" height="20" />
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No hay datos para mostrar]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+        <!-- MODOS DE VISTA -->
+        <!-- Declaracion del formulario -->
+        <record model="ir.ui.view" id="grupo_form">
+            <field name="name">Grupo</field>
+            <field name="model">grupo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="grupo">
+                    <sheet>
+                        <div class="oe_form_container">
+                            <div class="oe_form_sheet">
+                                <group  >
+                                    <field name="numero"/>
+                                    <field name="facultad_id"/>
+                                    <field name="descripcion"/>
+                                </group>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--Declaracion de la vista de árbol-->
+        <record model="ir.ui.view" id="grupo_tree">
+            <field name="name">Grupo</field>
+            <field name="model">grupo</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="grupo">
+                    <!--delete="false"-->
+                    <field name="numero"/>
+                    <field name="facultad_id"/>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ACCIONES -->
+        <record model="ir.actions.act_window" id="grupo_action">
+            <field name="name">Grupo</field>
+            <field name="res_model">grupo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+
+    <!--<menuitem id="menu_test" name="Test"/>-->
+    <!--<menuitem id="menu_test_vertical" parent="menu_test" name="Test" />-->
+    <menuitem id="menu_grupo"  parent="menu_test_vertical" name="Grupo"   action="grupo_action"/>
+
+</odoo>

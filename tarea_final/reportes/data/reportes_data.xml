@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+                <record id="list_estudiantes" model="ir.actions.report.xml">
+                    <field name="name">Listado de estudiantes</field>
+                    <field name="jasper_model_id" ref="model_listado_estudiantes" />
+                    <field name="model" ref="model_listado_estudiantes" />
+                    <field name="report_name">tarea_final.listado_estudiantes</field>
+                    <field name="jasper_output">pdf</field>
+                    <field name="jasper_report" eval="True" />
+                </record>
+
+                <record id="list_estudiantes_file" model="ir.actions.report.xml.file">
+                    <field name="file" type="base64" file="tarea_final/reportes/template/listado_estudiantes.jrxml"/>
+                    <field name="filename">listado_estudiantes.jrxml</field>
+                    <field name="default" eval="True" />
+                    <field name="report_id" ref="list_estudiantes" />
+                </record>
+
+                <record id="listado_profesores" model="ir.actions.report.xml">
+                    <field name="name">Listado de profesores egresados</field>
+                    <field name="jasper_model_id" ref="model_listado_profesores" />
+                    <field name="model" ref="model_listado_profesores" />
+                    <field name="report_name">tarea_final.listado_profesores</field>
+                    <field name="jasper_output">pdf</field>
+                    <field name="jasper_report" eval="True" />
+                </record>
+
+                <record id="listado_profesores_file" model="ir.actions.report.xml.file">
+                    <field name="file" type="base64" file="tarea_final/reportes/template/listado_profesores.jrxml"/>
+                    <field name="filename">listado_profesores.jrxml</field>
+                    <field name="default" eval="True" />
+                    <field name="report_id" ref="listado_profesores" />
+                </record>
+    </data>
+
+</odoo>

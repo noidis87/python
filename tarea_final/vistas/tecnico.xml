@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <data>
+        <!-- MODOS DE VISTA -->
+        <!-- Declaracion del formulario -->
+        <record model="ir.ui.view" id="tecnico_form">
+            <field name="name">Tecnico</field>
+            <field name="model">tecnico</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="tarea_final.persona_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="facultad_id" position="after">
+                    <field name="laboratorio_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!--Declaracion de la vista de bloque-->
+        <record model="ir.ui.view" id="tecnico_kanban">
+            <field name="name">Tecnico</field>
+            <field name="model">tecnico</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="tarea_final.persona_kanban"/>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban></kanban>
+            </field>
+        </record>
+
+        <!--Declaracion de la vista de árbol-->
+        <record model="ir.ui.view" id="tecnico_tree">
+            <field name="name">Tecnico</field>
+            <field name="model">tecnico</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="tarea_final.persona_tree"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <field name="fecha_nacimiento" position="after">
+                    <field name="laboratorio_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- ACCIONES -->
+        <record model="ir.actions.act_window" id="tecnico_action">
+            <field name="name">Tecnico</field>
+            <field name="res_model">tecnico</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+    </data>
+
+    <!--<menuitem id="menu_test" name="Test"/>-->
+    <!--<menuitem id="menu_test_vertical" parent="menu_test" name="Test" />-->
+    <menuitem id="menu_tecnico"  parent="menu_test_vertical" name="Tecnico"   action="tecnico_action"/>
+
+</odoo>

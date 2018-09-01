@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+fx_fnz_banco_config_settings_full_access,"BancoConfigSettings Full Access",model_fx_fnz_banco_config_settings,fx_fnz_banco_cfg,1,1,1,0
+fx_fnz_banco_config_settings_read_access,"BancoConfigSettings Read Access",model_fx_fnz_banco_config_settings,,1,0,0,0
+
+fx_fnz_banco_tipo_ctabancaria_full_access,"FxFnzBancoTipoCtaBancaria Full Access",model_fx_fnz_banco_tipo_ctabancaria,fx_fnz_banco_cfg,1,1,1,1
+fx_fnz_banco_tipo_ctabancaria_read_access,"FxFnzBancoTipoCtaBancaria Read Access",model_fx_fnz_banco_tipo_ctabancaria,,1,0,0,0
+
+fx_fnz_banco_ctabancaria_full_access,"FxFnzBancoCtaBancaria Full Access",model_fx_fnz_banco_ctabancaria,fx_fnz_banco_cfg,1,1,1,1
+fx_fnz_banco_ctabancaria_read_access,"FxFnzBancoCtaBancaria Read Access",model_fx_fnz_banco_ctabancaria,,1,0,0,0
